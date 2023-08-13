@@ -1,34 +1,190 @@
-.button_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.button_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 button{
+        position: relative;
+        width: 150px;
+        height: 50px;
+        transition: 1s;
+        overflow: hidden;
+        z-index: 1;
+        border: 1px solid gold;
+    }
+    button:hover{
+        color: #fff;
+        box-shadow: 0 0 10px gold,0 0 10px gold,0 0 10px gold,0 0 10px gold;
+    }
+    button::before{
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 50px;
+        left: -70px;
+        top: 0px;
+        transform: skew(35deg);
+        transition: linear 1s;
+        z-index: -1;
+    }
+    button:hover::before{
+        width: 150px;
+        background-color: aqua;
+    }
+.botder-effect{
     position: relative;
     width: 150px;
     height: 50px;
-    transition: 1s;
-    overflow: hidden;
-    z-index: 1;
-    border: 1px solid gold;
+    background-color: red;
+    display: inline-block;
+    border: none;
 }
-button:hover{
-    color: #fff;
-    box-shadow: 0 0 10px gold,0 0 10px gold,0 0 10px gold,0 0 10px gold;
-}
-button::before{
+.botder-effect span{
     position: absolute;
-    content: "";
-    width: 0;
-    height: 50px;
-    left: -70px;
-    top: 0px;
-    transform: skew(35deg);
-    transition: linear 1s;
-    z-index: -1;
+    background: aqua;
+    display: block;
 }
-button:hover::before{
+.botder-effect span:nth-child(1){
+    left: 0;
+    top: 0;
+    width: 75px;
+    transform-origin: left;
+    height: 1px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}   
+.botder-effect:hover span:nth-child(1){
+    transform: scaleX(1);
+    transform-origin: right;
+}
+.botder-effect span:nth-child(2){
+    right: 0;
+    top: 0;
+    transform-origin: right;
+    width: 75px;
+    height: 1px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}   
+.botder-effect:hover span:nth-child(2){
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.botder-effect span:nth-child(3){
+    right: 0;
+    top: 0;
+    transform-origin: bottom;
+    width: 1px;
+    height: 50px;
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}   
+.botder-effect:hover span:nth-child(3){
+    transform: scaleY(1);
+    transform-origin: top;
+}
+.botder-effect span:nth-child(4){
+    left: 0;
+    top: 0;
+    width: 1px;
+    transform-origin: bottom;
+    height: 50px;
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}   
+.botder-effect:hover span:nth-child(4){
+    transform: scaleY(1);
+    transform-origin: top;
+}
+.botder-effect span:nth-child(5){
+    left: 0;
+    bottom: 0;
+    width: 75px;
+    transform-origin: right;
+    height: 1px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transition-delay: 0.8s;
+}
+.botder-effect:hover span:nth-child(5){
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.botder-effect span:nth-child(6){
+    right: 0;
+    bottom: 0;
+    transform-origin: left;
+    width: 75px;
+    height: 1px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transition-delay: 0.8s;
+}
+.botder-effect:hover span:nth-child(6){
+    transform: scaleX(1);
+    transform-origin: right;
+}
+.hover_message {
+    position: relative;
+  height: 50px;
+  width: 150px;
+  background-color: darkgrey;
+  border: 1px solid red;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.hover_message::before {
+  content: "hover me!";
+  font-size: 14px;
+  position: absolute;
+  text-shadow: 0 0 20px #0ef, 0 0 20px #0ef, 0 0 20px #0ef, 0 0 20px #0ef;
+  transition: .3s;
+}
+.hover_message::after{
+    content: "Thanks";
+    font-size: 14px;
+    position: absolute;
+    text-shadow: 0 0 20px #f0f, 0 0 20px #f0f, 0 0 20px #f0f, 0 0 20px #f0f;
+    transform: translateY(-50px);
+    transition: .3s;
+    opacity: 0;
+}
+.hover_message:hover::before{
+    transform: translateY(50px);
+    opacity: 0;
+}
+.hover_message:hover::after{
+    transform: translateY(0);
+    opacity: 1;
+}
+.folded_button{
+    height: 50px;
     width: 150px;
-    background-color: aqua;
+    font-size: 20px;
+    background: linear-gradient(45deg,#00dbde,#fc00ff);
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.folded_button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 0;
+    border-color: #000 rgba(255,255,255,.3) rgba(255,255,255,.3)#000;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.4);
+    border-bottom-right-radius: 5px;
+    transition: .7s ease-out;
+}
+.folded_button:hover::before{
+    border-width: 14px;
 }
